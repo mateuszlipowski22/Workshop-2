@@ -45,12 +45,12 @@ public class UserDao {
                 user.setUserName(resultSet.getString("username"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
+                return user;
             }
-            return user;
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     public void update(User user){
@@ -83,7 +83,6 @@ public class UserDao {
         try (Connection conn = DbUtil.getConnection()) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(dbSize);
-
             User[] users = new User[0];
             while(rs.next()) {
                 int id = rs.getInt("id");
