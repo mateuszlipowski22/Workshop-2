@@ -79,14 +79,19 @@ public class UserDao {
     }
 
     public User[] findAll(){
-        String dbSize="SELECT id FROM workshop2.users ORDER BY id;";
+        String dbSize="SELECT * FROM workshop2.users ORDER BY id;";
         try (Connection conn = DbUtil.getConnection()) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(dbSize);
             User[] users = new User[0];
             while(rs.next()) {
                 int id = rs.getInt("id");
-                addToArray(read(id),users);
+                User user = new User();
+                user.setId(id);
+                user.setUserName(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                addToArray(user,users);
                 System.out.println(read(id).toString());
             }
             return users;

@@ -21,11 +21,11 @@ public class MainDao {
         userToUpdate.setPassword("superPassword");
         userDao.update(userToUpdate);
 
-        User secondUser = new User();
-        secondUser.setUserName("marek");
-        secondUser.setEmail("marek@coderslab.pl");
-        secondUser.setPassword("pass");
-        userDao.create(secondUser);
+//        User secondUser = new User();
+//        secondUser.setUserName("marek");
+//        secondUser.setEmail("marek@coderslab.pl");
+//        secondUser.setPassword("pass");
+//        userDao.create(secondUser);
         User[] all = userDao.findAll();
         for (User u : all) {
             System.out.println(u);
